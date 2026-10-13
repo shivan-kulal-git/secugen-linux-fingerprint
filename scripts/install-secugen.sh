@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# Guided build/install of upstream libfprint with SecuGen support.
-# Ubuntu/Debian apt-based systems only. Read README.md before running.
 set -Eeuo pipefail
 
 SOURCE_DIR="${HOME}/libfprint-secugen-src"
@@ -11,7 +9,6 @@ die() { printf '\nERROR: %s\n' "$*" >&2; exit 1; }
 note() { printf '\n==> %s\n' "$*"; }
 
 [[ -r /etc/os-release ]] || die "Cannot identify this operating system."
-# shellcheck disable=SC1091
 . /etc/os-release
 [[ "${ID:-}" == "ubuntu" || "${ID:-}" == "debian" || "${ID_LIKE:-}" == *debian* ]] ||
   die "This script is intended for Ubuntu/Debian-style systems only."
